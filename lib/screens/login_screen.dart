@@ -20,6 +20,29 @@ SMIBool ? _isHandsUp;
 SMITrigger? _trigSuccess;
 SMITrigger? _trigFail;
 
+//1.1)crear variables para focus
+final _emailFocusNode = FocusNode();
+final _passwordFocusNode = FocusNode();
+
+//1.2) listeners (oyentes/chismosos)
+@override
+void initState() {
+  super.initState();
+  _emailFocusNode.addListener(() {
+    if (_emailFocusNode.hasFocus)
+    //verifica que no sea nulo
+    {
+      if (_isHandsUp != null) {
+
+        _isHandsUp!.change(false);
+      }
+      }
+  });
+
+  _passwordFocusNode.addListener(() {
+    _isHandsUp ?.change(_passwordFocusNode.hasFocus);
+  });
+  
   @override
   Widget build(BuildContext context) {
     // Si no usas 'size', puedes borrar esta línea para eliminar el warning
@@ -56,10 +79,12 @@ SMITrigger? _trigFail;
               const SizedBox(height: 10),
               //campo de email 
               TextField(
+                //1.3 asignar los focus nodes a cada campo de texto
+                focusNode: _emailFocusNode,
                 onChanged: (value) {
                   if (_isHandsUp != null) {
                     // baja las manos al escribir el email
-                    _isHandsUp!.change(false);
+                   // _isHandsUp!.change(false);
                   }
                   //si checking no es nulo, activar el modo chismoso
                   if (_isChecking != null) {
@@ -80,6 +105,9 @@ SMITrigger? _trigFail;
               const SizedBox(height: 10),
 // campo de texto de contraseña con el ícono de ojo para mostrar/ocultar la contraseña
               TextField(
+                //1.3 asignar los focus nodes a cada campo de texto
+                focusNode: _passwordFocusNode,
+                
                  onChanged: (value) {
                   if (_isHandsUp != null) {
                     //tapes los ojos al ver la contraseña
@@ -87,7 +115,7 @@ SMITrigger? _trigFail;
                   }
                   if (_isChecking != null) {
                     //no activar el modo chismoso
-                    _isChecking!.change(false);
+                    //_isChecking!.change(false);
                   }
                 },
                 obscureText: _obscureText,
@@ -118,5 +146,12 @@ SMITrigger? _trigFail;
         ),
       ),
     );
+    //1.4 liberar memoria
+    @override
+    void dispose() {
+      //1.4) eliminar los listeners para evitar fugas de memoria
+      _emailFocusNode.dispose();
+      _passwordFocusNode.dispose();
+      super.dispose();
+    }
   }
-}
