@@ -36,12 +36,13 @@ void initState() {
 
         _isHandsUp!.change(false);
       }
-      }
+    }
   });
 
   _passwordFocusNode.addListener(() {
     _isHandsUp ?.change(_passwordFocusNode.hasFocus);
   });
+}
   
   @override
   Widget build(BuildContext context) {
@@ -155,3 +156,4 @@ void initState() {
       super.dispose();
     }
   }
+}
