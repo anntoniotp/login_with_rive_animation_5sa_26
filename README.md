@@ -39,17 +39,14 @@ A State Machine in Rive is a visual logic layer that connects different animatio
 
 ---
 ## 🚀 Installation
-Clone the repository:
+1- Clone the repository:
 
-Bash
 git clone <your_project_url>
-Install dependencies:
 
-Bash
+2- Install dependencies:
 flutter pub get
-Run the application:
 
-Bash
+3- Run the application:
 flutter run
 ---
 
