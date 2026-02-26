@@ -39,6 +39,43 @@ A State Machine in Rive is a visual logic layer that connects different animatio
 
 ---
 
+
+## 🚀 Installation
+
+**1- Clone the repository:**
+```bash
+git clone <your_project_url>
+```
+2- Navigate to the project folder:
+```bash
+cd login_with_rive_animation_5sa_26
+```
+3- Install dependencies:
+```bash
+flutter pub get
+```
+
+4- Run the project:
+```bash
+ flutter run
+```
+---
+
+## 🎮 Usage
+1. Enter your email
+The bear will follow your typing with its eyes.
+
+2. Enter your password
+The bear automatically covers its eyes.
+
+3. Press Login
+
+✅ Correct credentials (Admin@gmail.com / Admin12345) → Bear becomes happy.
+
+❌ Wrong credentials → Bear becomes sad.
+
+---
+
 ## 📂 Project Structure
 ```text
 lib/
